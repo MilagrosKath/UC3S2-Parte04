@@ -8,7 +8,10 @@ layout = """
                 <a href="/inicio">Inicio</a>
             </li>
             <li>
-                <a href="/Primos">Numeros primos entre [a] y [b]</a>
+                <a href="/primos">Numeros primos entre [a] y [b]</a>
+            </li>
+            <l1>
+                <a href="/examen">Examen</a>
             </li>
         </ul>
     </h3>
@@ -22,13 +25,18 @@ def inicio(request):
             <ul>
                 <li>Barzola Navarro, Danee</li>
                 <li>Gonzales Castillo, Daniel</li>
-                <li>Soto Obregón, Milagros Katherine</li>
+                <li>Soto Obregón, Milagros Katherine
+                 </li>
             </ul>
         </h2>
     """
     return HttpResponse(layout+mensaje)
 
 def primos(request, a=0, b=100):
+    if a > b:
+        temp = b
+        b = a
+        a = temp
     a1 = a
     b1 = b
     mensaje = f"""
@@ -47,3 +55,22 @@ def primos(request, a=0, b=100):
         a = a + 1
     mensaje += "</ul>"
     return HttpResponse(layout+mensaje)
+
+def examen(request):
+    mensaje2="""
+        <h1>GitHub del Proyecto</h1>
+        <h2>
+            <ul>
+                <li>Soto Obregón, Milagros Katherine
+                <br>https://github.com/MilagrosKath/UC3S2_Parte01.git </li>
+                <li>Barzola Navarro, Danee
+                <br>https://github.com/DaneeJhajaira2002/UC3S2-Parte02.git
+                </li>
+                <li>Gonzales Castillo, Daniel
+                <br>https://github.com/DanXanDer/UC3S2-Parte03.git</li>
+                <li>Soto Obregón, Milagros Katherine
+                <br>https://github.com/MilagrosKath/UC3S2-Parte04.git</li>
+            </ul>
+        </h2>
+    """
+    return HttpResponse(layout+mensaje2)
